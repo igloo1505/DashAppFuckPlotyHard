@@ -1,36 +1,43 @@
-from dash import Dash, dcc, html, Input, Output, callback
-from pages import MatrixInMotion, SphericalRebound
-app = Dash(__name__, suppress_callback_exceptions=True)
+# import dash
+# dash.register_page(__name__, path="/")
+# from dash import Dash, dcc, html, Input, Output, callback
+# from pages import MatrixInMotion, SphericalRebound
+# from pages.MatrixInMotion import MatrixInMotion
+# import dash_labs as dl
+# import dash_bootstrap_components as dbc   
+import dash
+import dash_labs as dl
+import dash_bootstrap_components as dbc
+from components.Sidebar import sidebar
 
-app.layout = html.Div(
-    [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
+app = dash.Dash(
+    __name__, 
+    plugins=[dl.plugins.pages],
+    external_stylesheets=[dbc.themes.CYBORG],
 )
 
 
-index_page = html.Div(
-    [
-        dcc.Link("Go to Page 1", href="/page-1"),
-        html.Br(),
-        dcc.Link("Go to Page 2", href="/page-2"),
-    ]
+
+
+navbar = dbc.NavbarSimple(
+    dbc.Nav(
+        [
+            dbc.NavLink(page["name"], href=page["path"])
+            for page in dash.page_registry.values()
+            if page.get("top_nav")
+        ],
+    ),
+    brand="Multi Page App Demo",
+    color="primary",
+    dark=True,
+    className="mb-2",
 )
 
 
-
-
-
-
-
-# Update the index
-@callback(Output("page-content", "children"), [Input("url", "pathname")])
-def display_page(pathname):
-    if pathname == "/matrixInMotion":
-        return MatrixInMotion
-    elif pathname == "/reboundForce":
-        return SphericalRebound
-    else:
-        return index_page
-    # You could also return a 404 "URL not found" page here
+app.layout = dbc.Container(
+    [navbar, sidebar(), dl.plugins.page_container],
+    fluid=True,
+)
 
 
 if __name__ == "__main__":
