@@ -2,7 +2,12 @@ import dash_bootstrap_components as dbc
 from dash import Input, Output, State, html,  callback
 import dash
 from dash_bootstrap_components._components.Container import Container
-
+from pathlib import Path
+import sys
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+from state.settings import style
+color = style["colors"]["highlightBackground"]
 # from assets import logo
 # from PIL import Image
 # logoPath = "./assets/"
@@ -18,7 +23,7 @@ def Navbar():
         ],
     ),
     brand="Movement Through A Matrix In Motion",
-    color="info",
+    color=color,
     dark=True,
     className="mb-2",
 ))

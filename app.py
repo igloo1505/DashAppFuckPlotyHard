@@ -19,12 +19,13 @@ app = dash.Dash(
 
 
 
-
 app.layout = dbc.Container(
     [sidebar(), Navbar(), dl.plugins.page_container],
     fluid=True,
 )
 
+
+app.config.suppress_callback_exceptions = True
 
 if __name__ == "__main__":
     app.run_server(debug=True)

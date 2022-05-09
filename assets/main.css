@@ -13,7 +13,7 @@ body {
 	background-color: var(--main-background);
 }
 
-.react-entry-point {
+#react-entry-point {
 	margin: 64px 1rem 5rem 1rem;
 }
 
@@ -49,3 +49,33 @@ a:hover {
 	max-width: none;
 	padding: 0 1rem;
 }
+.navbar * {
+	color: #000 !important;
+}
+
+.navbar-nav a {
+	color: #000 !important;
+	font-weight: 500;
+	transition: all 0.3s ease-in-out;
+}
+.navbar-nav a:hover {
+	color: var(--secondary) !important;
+	transform: translateY(-3px);
+}
+
+.radio-group .form-check {
+	padding-left: 0;
+}
+
+.radio-group .btn-group > .form-check:not(:last-child) > .btn {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.radio-group .btn-group > .form-check:not(:first-child) > .btn {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: -1px;
+}
+
+/* #matrix-in-motion-layout{} */
