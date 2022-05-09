@@ -9,6 +9,7 @@ import dash
 import dash_labs as dl
 import dash_bootstrap_components as dbc
 from components.Sidebar import sidebar
+from components.Navbar import Navbar
 
 app = dash.Dash(
     __name__, 
@@ -19,23 +20,8 @@ app = dash.Dash(
 
 
 
-navbar = dbc.NavbarSimple(
-    dbc.Nav(
-        [
-            dbc.NavLink(page["name"], href=page["path"])
-            for page in dash.page_registry.values()
-            if page.get("top_nav")
-        ],
-    ),
-    brand="Multi Page App Demo",
-    color="primary",
-    dark=True,
-    className="mb-2",
-)
-
-
 app.layout = dbc.Container(
-    [navbar, sidebar(), dl.plugins.page_container],
+    [sidebar(), Navbar(), dl.plugins.page_container],
     fluid=True,
 )
 

@@ -56,8 +56,7 @@ from dash import Input, Output, State, html, callback
 
 
 def sidebar():
-    return html.Div(
-        dbc.Nav(
+    return dbc.Nav(
             [
                 dbc.NavLink(
                     [
@@ -73,4 +72,3 @@ def sidebar():
             pills=True,
             className="bg-light",
         )
-    )
