@@ -132,13 +132,23 @@ a:hover {
 	justify-content: center;
 	align-items: center;
 }
+#home-page-text-container {
+	font-size: 1.2rem;
+}
 
 .navbar-toggler-icon {
 	color: #000 !important;
 }
 
+.rc-slider-dot {
+	border-color: var(--ui-interactive-color);
+	background-color: var(--main-background);
+}
 .rc-slider-dot-active {
 	border-color: var(--ui-interactive-color);
+	background-color: var(--main-background);
+}
+.rc-slider-rail {
 	background-color: var(--main-background);
 }
 .rc-slider-track {
@@ -146,5 +156,23 @@ a:hover {
 }
 .rc-slider-handle {
 	background-color: var(--main-background);
+	background-color: var(--ui-interactive-color);
 	border-color: var(--ui-interactive-color);
+}
+.rc-slider-handle:hover {
+	background-color: var(--main-background);
+	background-color: var(--ui-interactive-color);
+	border-color: var(--ui-interactive-color);
+}
+.rc-slider-handle:focus-visible {
+	background-color: var(--main-background);
+	background-color: var(--ui-interactive-color);
+	border-color: var(--ui-interactive-color);
+}
+
+#matrixInMotion-markdown-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 }

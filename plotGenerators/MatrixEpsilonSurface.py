@@ -33,7 +33,7 @@ def genMatrixSurfacePlot(trajectoryXAndY, colors, vals):
         )
     )
     surfaceFig.update_layout(
-        title='Lateral-Symmetrical Movement through a Matrix in Motion', autosize=True,
+        title='Perpendicular-Parallel Movement Through a Matrix in Motion', autosize=True,
                             height=700,
                             margin=dict(l=65, r=50, b=65, t=90),
                             scene=dict(

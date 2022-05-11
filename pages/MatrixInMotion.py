@@ -19,17 +19,10 @@ df = pd.DataFrame(vals)
 from utils.tableHandler import generateDashTable
 scatterFig = genScatterMatrixPlot(trajectoryXAndY, df)
 from textContent.MatrixInMotionText import matrixSliderText
-
+from textContent.Formulas import alphaDerivation as derivedForceAtTheta
 tbl = generateDashTable(df)
 
-cols = []
-vals = []
-edf = df.describe().to_dict()
-for j in edf:
-    cols.append({j})
-    vals.append(edf[j])
-print(vals)
-# print(tbl)
+
 layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-in-motion-layout", children=[
     # html.Div(children='Dash: A web application framework for your data.', style={
     #     'textAlign': 'center',
@@ -57,7 +50,10 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
         # tooltip={"placement": "bottom", "always_visible": True}
     ), style={'width': '90%', 'padding': '0px 0px 20px 0px'})
     ], id="matrix-slider-container"),
+    html.Div([  
+    dcc.Markdown(derivedForceAtTheta, mathjax=True),
     dcc.Markdown(matrixSliderText, mathjax=True)
+    ], id="matrixInMotion-markdown-container"),
     ], id="matrix-slider-container-outer"),
     # tbl
 ])
