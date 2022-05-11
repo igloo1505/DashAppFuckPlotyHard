@@ -37,9 +37,9 @@ def genMatrixSurfacePlot(trajectoryXAndY, colors, vals):
                             height=700,
                             margin=dict(l=65, r=50, b=65, t=90),
                             scene=dict(
-                                xaxis_title='Δω',
-                                yaxis_title="Δy",
-                                zaxis_title="ε",
+                                xaxis_title='Δε',
+                                yaxis_title="Δλ",
+                                zaxis_title="α",
                                 aspectmode='manual',
                                 yaxis = dict(nticks=8, range=[0, 1]),
                                 xaxis = dict(nticks=8, range=[0, 1]),
@@ -53,6 +53,7 @@ def genMatrixSurfacePlot(trajectoryXAndY, colors, vals):
                                 xaxis_title='Δω',
                                 yaxis_title='ε',
                         )
+    surfaceFig.to_html("./currentSurfacePlot.html")
     return surfaceFig
 
 

@@ -24,6 +24,6 @@ def Navbar():
     ),
     brand="Movement Through A Matrix In Motion",
     color=color,
-    dark=True,
+    # dark=True,
     className="mb-2",
 ))

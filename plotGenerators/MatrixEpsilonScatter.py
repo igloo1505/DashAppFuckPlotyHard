@@ -42,19 +42,11 @@ def genScatterMatrixPlot(trajectoryXAndY, df):
             step["args"][0]["visible"][i] = True
             linearScatterSteps.append(step)
 
-        # linearScatterSliders = [dict(
-        #     active=1,
-        #     currentvalue={"prefix": "Motion Perpendicular to flow: "},
-        #     pad={"t": 50},
-        #     steps=linearScatterSteps
-        # )]
-
         linearScatterFig.update_layout(title='Lateral-Symmetrical Movement through a Matrix in Motion', autosize=True,
                                 height=700,
                                 margin=dict(l=65, r=50, b=65, t=90),
-                                # sliders=linearScatterSliders,
-                                yaxis_title="Epsilon",
-                                xaxis_title='Observer Epsilon'
+                                yaxis_title="α",
+                                xaxis_title='Δε'
                                 )
 
         linearScatterFig.update_yaxes(
@@ -77,7 +69,3 @@ def genScatterMatrixPlot(trajectoryXAndY, df):
         return linearScatterFig
         
     
-
-def genScatterAsPx(df):
-    fig = px.scatter(df)
-    return fig
