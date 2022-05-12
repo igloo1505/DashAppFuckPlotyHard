@@ -18,9 +18,14 @@ surface = genMatrixSurfacePlot(trajectoryXAndY, colors, vals)
 df = pd.DataFrame(vals)
 from utils.tableHandler import generateDashTable
 scatterFig = genScatterMatrixPlot(trajectoryXAndY, df)
-from textContent.MatrixInMotionText import matrixSliderText
-from textContent.Formulas import alphaDerivation as derivedForceAtTheta
+from textContent.MatrixInMotionText import matrixInMotionText
+from textContent.Formulas import alphaDerivation, matrixSurfaceColor
 tbl = generateDashTable(df)
+
+markdowns = []
+for p in matrixInMotionText:
+    P = dcc.Markdown(p, mathjax=True, className="matrixInMotionTextSingle")
+    markdowns.append(P)
 
 
 layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-in-motion-layout", children=[
@@ -50,9 +55,16 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
         # tooltip={"placement": "bottom", "always_visible": True}
     ), style={'width': '90%', 'padding': '0px 0px 20px 0px'})
     ], id="matrix-slider-container"),
+    html.Div([
     html.Div([  
-    dcc.Markdown(derivedForceAtTheta, mathjax=True),
-    dcc.Markdown(matrixSliderText, mathjax=True)
+              
+    dcc.Markdown(alphaDerivation, mathjax=True),
+    dcc.Markdown(matrixSurfaceColor, mathjax=True),
+    
+    ], id="matrixInMotionDerivationContainer"),
+    
+    *markdowns
+    
     ], id="matrixInMotion-markdown-container"),
     ], id="matrix-slider-container-outer"),
     # tbl

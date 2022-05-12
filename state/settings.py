@@ -1,5 +1,5 @@
 settings = {
-    "axisLength": 30,
+    "axisLength": 100,
     "sampleTableDetail": 100,
     "accuracy": 1,
     "matrixReboundUpperLimit": 20,
