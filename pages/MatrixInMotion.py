@@ -20,13 +20,30 @@ from utils.tableHandler import generateDashTable
 scatterFig = genScatterMatrixPlot(trajectoryXAndY, df)
 from textContent.MatrixInMotionText import matrixInMotionText
 from textContent.Formulas import alphaDerivation, matrixSurfaceColor
+import plotly.express as px
+colorTest = px.colors.get_colorscale("plasma")
+print(f"test {colorTest}")
 tbl = generateDashTable(df)
+print(df.head())
+print(df.columns)
+
 
 markdowns = []
 for p in matrixInMotionText:
     P = dcc.Markdown(p, mathjax=True, className="matrixInMotionTextSingle")
     markdowns.append(P)
 
+halfAssedKwargs = {}
+
+if settings["axisLength"] > 30:
+    halfAssedKwargs["tooltip"] = {"placement": "bottom", "always_visible": True}
+    halfAssedKwargs["marks"] = None
+    halfAssedKwargs["step"] = None
+    halfAssedKwargs["included"] = True
+elif settings["axisLength"] <= 30:
+    halfAssedKwargs["marks"] = {i: '{}'.format(round(i, 2)) for i in np.linspace(0, 1, len(df.columns))}
+    halfAssedKwargs["step"] = None
+    halfAssedKwargs["dots"] = True
 
 layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-in-motion-layout", children=[
     # html.Div(children='Dash: A web application framework for your data.', style={
@@ -43,16 +60,14 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
         id='matrix-surface-scatter-fig',
         figure=scatterFig
     ), 
+    html.Div("Slider:", id="slider-label-text"),
     html.Div(dcc.Slider(
-        df.columns.min(),
-        df.columns.max(),
-        step=None,
+        0,
+        1,
         id='matrix-scatter-slider',
         value=df.columns.min(),
-        marks={str(n): str(f"{round(n / df.columns.max(), 2)}") for n in df.columns},
-        dots=True
-        # marks=None,
-        # tooltip={"placement": "bottom", "always_visible": True}
+        updatemode="drag",
+        **halfAssedKwargs
     ), style={'width': '90%', 'padding': '0px 0px 20px 0px'})
     ], id="matrix-slider-container"),
     html.Div([
@@ -77,8 +92,8 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
     Input("matrix-scatter-slider", "value"))
 def updateScatterMatrixPlot(sliderVal):
     for i in range(len(scatterFig.data)):
-        if sliderVal == i:
-            scatterFig.data[i].visible = True
-        if not sliderVal == i:
-            scatterFig.data[i].visible = False
+        scatterFig.data[i].visible = False
+    lsp = np.linspace(0, 1, len(scatterFig.data))
+    index = (np.abs(lsp - sliderVal)).argmin()
+    scatterFig.data[index].visible = True
     return scatterFig

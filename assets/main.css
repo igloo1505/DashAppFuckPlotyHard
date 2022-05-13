@@ -182,6 +182,16 @@ a:hover {
 	border-color: var(--ui-interactive-color);
 }
 
+#matrix-scatter-slider {
+	max-width: 90vw;
+}
+.rc-slider-tooltip-content {
+	/* background-color: var(--ui-interactive-color); */
+}
+.rc-slider-tooltip-inner {
+	background-color: var(--ui-interactive-color);
+}
+
 #matrixInMotion-markdown-container {
 	display: flex;
 	flex-direction: column;
@@ -198,4 +208,10 @@ a:hover {
 	flex-wrap: wrap;
 	gap: 2rem;
 	align-items: center;
+}
+
+#slider-label-text {
+	margin-bottom: 8px;
+	font-weight: 600;
+	letter-spacing: 1px;
 }

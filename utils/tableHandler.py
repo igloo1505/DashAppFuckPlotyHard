@@ -23,7 +23,7 @@ def generateDashTable(df):
     for j in edf:
         cols.append(j)
         vals.append(edf[j])
-        print(vals)
+        # print(vals)
     return html.Div([  
         dash_table.DataTable(vals, columns=cols )
     ])

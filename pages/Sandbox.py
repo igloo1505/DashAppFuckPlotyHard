@@ -25,9 +25,9 @@ for n in np.linspace(1, 299792458, L):
     if rv:
         vals.append(rv)
 rdf = pd.DataFrame(vals)
-print(rdf.head())
-print(rdf.tail())
-print(rdf.columns)
+# print(rdf.head())
+# print(rdf.tail())
+# print(rdf.columns)
 # (['beta', 'velocity', 'matrixV', 'gamma', 'tNaught', 'tPrimeAltered',
     #    'tNaughtAltered', 'theoreritcalEpsilonDerivative'],
 fig = go.Figure()
@@ -45,7 +45,6 @@ fig.add_trace(go.Scatter(x=rdf["velocity"], y=rdf["gamma"],
                         mode='markers',
                         name="gamma"
                         ))
-
 fig.add_trace(go.Scatter(x=rdf["velocity"], y=rdf["beta"],
                         mode='markers',
                         name="beta"

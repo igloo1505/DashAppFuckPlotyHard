@@ -69,4 +69,4 @@ class Circle:
 c = Circle(nPoints=10)
 # d = c.readStoredCsvs()
 d = c.getPoints()
-print(d)
+# print(d)

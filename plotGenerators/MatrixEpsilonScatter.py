@@ -23,7 +23,7 @@ def genScatterMatrixPlot(trajectoryXAndY, df):
                         mode='markers',
                         name='{}'.format(__y),
                         marker=dict(
-                            size=df[__y]  * (settings["axisLength"] / 3),
+                            size=df[__y]  * (settings["axisLength"] / 10),
                             color=trajectoryXAndY,
                             colorscale='Plasma',
                             opacity=0.8
