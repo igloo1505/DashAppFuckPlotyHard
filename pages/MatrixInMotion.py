@@ -78,8 +78,7 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
     
     ], id="matrixInMotion-markdown-container"),
     ], id="matrix-slider-container-outer"),
-    # tbl
-    dTable.Describetable(id="matrix-surface-dTable", data=df.describe().to_html(), buttonText="Describe Plotted Data")
+    dTable.Describetable(id="matrix-surface-dTable", data=df.describe().to_html(), buttonText="Describe Plotted Data", buttonFloat="right")
 ])
 
 
