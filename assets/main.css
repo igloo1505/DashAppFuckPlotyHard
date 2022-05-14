@@ -215,3 +215,33 @@ a:hover {
 	font-weight: 600;
 	letter-spacing: 1px;
 }
+
+#matrixTblContainerOuter {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#matrixTblContainer {
+	max-width: 100%;
+	/* margin-left: 5vw; */
+	overflow: scroll;
+}
+
+#matrix-pandas-container {
+	width: 90vw;
+}
+#matrix-pandas-container * {
+	color: #fff;
+}
+#matrix-pandas-container iframe {
+	height: 260px;
+	width: 100%;
+}
+
+thead tr {
+	border-width: inherit;
+	border-style: inherit;
+	border-color: #000;
+}

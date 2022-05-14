@@ -16,16 +16,12 @@ trajectoryXAndY = np.linspace(sys.float_info.min * 10, 1, settings["axisLength"]
 vals, colors = getEpsilon(trajectoryXAndY, trajectoryXAndY)
 surface = genMatrixSurfacePlot(trajectoryXAndY, colors, vals)
 df = pd.DataFrame(vals)
-from utils.tableHandler import generateDashTable
+from utils.tableHandler import generateDashTable, generate_table
 scatterFig = genScatterMatrixPlot(trajectoryXAndY, df)
 from textContent.MatrixInMotionText import matrixInMotionText
 from textContent.Formulas import alphaDerivation, matrixSurfaceColor
-import plotly.express as px
-colorTest = px.colors.get_colorscale("plasma")
-print(f"test {colorTest}")
-tbl = generateDashTable(df)
-print(df.head())
-print(df.columns)
+import describetable as dTable
+
 
 
 markdowns = []
@@ -83,7 +79,9 @@ layout = html.Div(style={'backgroundColor': colorrr['background']}, id="matrix-i
     ], id="matrixInMotion-markdown-container"),
     ], id="matrix-slider-container-outer"),
     # tbl
+    dTable.Describetable(id="matrix-surface-dTable", data=df.describe().to_html(), buttonText="Describe Plotted Data")
 ])
+
 
 
 
